@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrlfqahrhfp2"]
+
+[ext_resource type="Texture2D" uid="uid://d1ufqyj4jyyuo" path="res://png-transparent-animation-heart-femme-heart-smiley-cartoon-thumbnail.png" id="1_b5v5q"]
+[ext_resource type="Texture2D" uid="uid://bgltpanvy2dh2" path="res://png-clipart-woman-graphy-woman-photography-hand.png" id="2_b2d4b"]
+
+[node name="Character" type="Node2D"]
+
+[node name="CharacterPlayer" type="RigidBody2D" parent="."]
+
+[node name="FemmePNG" type="Sprite2D" parent="CharacterPlayer"]
+texture = ExtResource("1_b5v5q")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterPlayer/FemmePNG"]
+
+[node name="Png-clipart-woman-graphy-woman-photography-hand" type="Sprite2D" parent="."]
+position = Vector2(304, -13)
+scale = Vector2(0.339725, 0.339725)
+texture = ExtResource("2_b2d4b")
