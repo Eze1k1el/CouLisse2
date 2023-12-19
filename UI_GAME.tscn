@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn3ky4hw725gj"]
+
+[ext_resource type="Script" path="res://Scor.gd" id="1_3yoha"]
+[ext_resource type="Script" path="res://Bouton.gd" id="2_7s7pp"]
+
+[node name="UiGame" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1918.0
+offset_bottom = 1073.0
+script = ExtResource("1_3yoha")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1906.0
+offset_bottom = 1072.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 451.0
+offset_right = 1224.0
+offset_bottom = 613.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Score : 00"
+
+[node name="Button" type="Button" parent="Control"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("2_7s7pp")
