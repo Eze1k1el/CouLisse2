@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=8 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rg00h"]
 [ext_resource type="Texture2D" uid="uid://b7rqa2euobiiy" path="res://Coulisse.png" id="2_botxq"]
@@ -9,31 +9,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(427, 148)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb67c"]
-size = Vector2(435, 150)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_b84ci"]
 radius = 154.77
 
 [node name="Character" type="Node2D"]
+position = Vector2(959, 541)
 
 [node name="CouLisse" type="CharacterBody2D" parent="." groups=["CouLisse"]]
-position = Vector2(-2, -2)
 script = ExtResource("1_rg00h")
 
 [node name="Coulisse" type="Sprite2D" parent="CouLisse"]
-position = Vector2(-43, -19)
+position = Vector2(17, 1054)
 texture = ExtResource("2_botxq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CouLisse"]
-position = Vector2(-91.5, -928)
+position = Vector2(-23, 136)
 shape = SubResource("RectangleShape2D_hlefc")
-
-[node name="pomme detector" type="Area2D" parent="CouLisse"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CouLisse/pomme detector"]
-position = Vector2(-90.5, -928)
-shape = SubResource("RectangleShape2D_vb67c")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -42,28 +33,27 @@ offset_left = -14.0
 offset_top = -260.0
 offset_right = 502.0
 offset_bottom = -99.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-40, -1149)
 
 [node name="Pomme" type="Area2D" parent="." groups=["Pomme"]]
 script = ExtResource("3_sxq4u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme"]
-position = Vector2(503.75, -961)
+position = Vector2(511, 130)
 shape = SubResource("CircleShape2D_b84ci")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pomme"]
-position = Vector2(504, -962)
+position = Vector2(514, 138)
 texture = ExtResource("4_ty80i")
 
 [node name="Fond" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Fond"]
 z_index = -1
-position = Vector2(-42.25, -1693.97)
+position = Vector2(0, -531)
 scale = Vector2(0.747852, 0.747852)
 texture = ExtResource("5_udmeg")
 
-[connection signal="area_shape_entered" from="CouLisse/pomme detector" to="CouLisse" method="_on_pomme_detector_area_shape_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]

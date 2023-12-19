@@ -26,14 +26,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	var directionupdown = Input.get_axis("ui_up", "ui_down")
-	if position.y == 0:
-		velocity.y = directionupdown * 0
 	if directionupdown:
 		velocity.y = directionupdown * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-
 	move_and_slide()
-
+	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 
 
