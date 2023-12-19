@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = 0;
 
 
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -26,3 +27,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+
