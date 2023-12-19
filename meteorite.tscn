@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfjmp3787432o"]
+
+[ext_resource type="Script" path="res://meteorite.gd" id="1_dx6d4"]
+[ext_resource type="Texture2D" uid="uid://c4735cb20s5vh" path="res://meteorite.png" id="1_we82h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3b2a"]
+size = Vector2(352, 352)
+
+[node name="Meteorite" type="StaticBody2D"]
+script = ExtResource("1_dx6d4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o3b2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_we82h")

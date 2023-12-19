@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-const SPEED = 100
 var hmin = 750
 var hmax = 250
 # Called when the node enters the scene tree for the first time.
