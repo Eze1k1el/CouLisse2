@@ -6,6 +6,7 @@ var hauteur_max = 250
 var hauteur_min = 750
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Oizo_Anim.play("Oizo_Animation")
 	pass # Replace with function body.
 
 
