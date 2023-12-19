@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b00nxd0ropj8x"]
+
+[ext_resource type="Script" path="res://AvionBouge.gd" id="1_inn7v"]
+[ext_resource type="Texture2D" uid="uid://l7dnfye0h861" path="res://aviondegueu.png" id="2_tf0hb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v8l6"]
+size = Vector2(512, 248)
+
+[node name="SceneAvion" type="Node2D"]
+
+[node name="AvionAuto" type="StaticBody2D" parent="."]
+position = Vector2(576, 342)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_inn7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvionAuto"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_7v8l6")
+
+[node name="Sprite2D" type="Sprite2D" parent="AvionAuto"]
+texture = ExtResource("2_tf0hb")
