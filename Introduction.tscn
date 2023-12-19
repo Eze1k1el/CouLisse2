@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://fff8f5fujdpi"]
+
+[ext_resource type="Script" path="res://Text.gd" id="1_8ohfs"]
+[ext_resource type="Texture2D" uid="uid://cfevxyxlk4fwn" path="res://Godot_Guy.png" id="1_s00es"]
+[ext_resource type="Texture2D" uid="uid://byj7qteae1ql" path="res://Black_triangle.svg.png" id="2_mpvop"]
+[ext_resource type="Script" path="res://Dialogue.gd" id="3_2h7y3"]
+
+[node name="Introduction" type="Node2D"]
+script = ExtResource("1_8ohfs")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GodotGuy" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1021, 374)
+scale = Vector2(0.623543, 0.564095)
+texture = ExtResource("1_s00es")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1613, 919)
+scale = Vector2(0.0364581, 0.0371093)
+texture = ExtResource("2_mpvop")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 340.0
+offset_top = 591.0
+offset_right = 1670.0
+offset_bottom = 964.0
+script = ExtResource("3_2h7y3")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextEdit"]
+layout_mode = 0
+offset_right = 1323.0
+offset_bottom = 370.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TextEdit"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 20.0
+offset_right = 1298.0
+offset_bottom = 348.0
+
+[node name="Label" type="Label" parent="TextEdit/MarginContainer"]
+layout_mode = 2
+
+[connection signal="timeout" from="Timer" to="TextEdit" method="_on_timer_timeout"]
