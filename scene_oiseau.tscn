@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ibx6livdm4d0"]
+
+[ext_resource type="Script" path="res://OiseauBouge.gd" id="1_kbq6o"]
+[ext_resource type="Texture2D" uid="uid://b7wt2vnr7obvl" path="res://oiseau.jpg" id="2_tq8vj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kvml"]
+size = Vector2(576, 576)
+
+[node name="SceneOiseau" type="Node2D"]
+
+[node name="OiseauBeau" type="StaticBody2D" parent="."]
+position = Vector2(-72, 320)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_kbq6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="OiseauBeau"]
+texture = ExtResource("2_tq8vj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OiseauBeau"]
+shape = SubResource("RectangleShape2D_5kvml")
