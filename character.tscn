@@ -10,6 +10,7 @@ height = 524.0
 [node name="Character" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-2, -2)
 script = ExtResource("1_rg00h")
 
 [node name="Png-transparent-animation-heart-femme-heart-smiley-cartoon-thumbnail" type="Sprite2D" parent="CharacterBody2D"]
@@ -17,3 +18,11 @@ texture = ExtResource("1_b5v5q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_nnmh1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = -10.0
+offset_right = 34.0
+offset_bottom = 30.0
