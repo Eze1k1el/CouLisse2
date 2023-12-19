@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3ky4hw725gj"]
+[gd_scene load_steps=2 format=3 uid="uid://cn3ky4hw725gj"]
 
 [ext_resource type="Script" path="res://Scor.gd" id="1_3yoha"]
-[ext_resource type="Script" path="res://Bouton.gd" id="2_7s7pp"]
 
 [node name="UiGame" type="Node2D"]
 
@@ -14,20 +13,26 @@ script = ExtResource("1_3yoha")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
-offset_right = 1906.0
-offset_bottom = 1072.0
+offset_right = 1040.0
+offset_bottom = 514.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 674.0
-offset_top = 451.0
-offset_right = 1224.0
-offset_bottom = 613.0
+offset_left = 258.0
+offset_top = 176.0
+offset_right = 808.0
+offset_bottom = 338.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "Score : 00"
 
 [node name="Button" type="Button" parent="Control"]
-offset_right = 8.0
-offset_bottom = 8.0
-script = ExtResource("2_7s7pp")
+layout_mode = 0
+offset_left = 1115.0
+offset_top = 629.0
+offset_right = 1768.0
+offset_bottom = 962.0
+theme_override_font_sizes/font_size = 150
+text = "ADD"
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
