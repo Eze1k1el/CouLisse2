@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rg00h"]
-[ext_resource type="Texture2D" uid="uid://b7rqa2euobiiy" path="res://Coulisse.png" id="2_botxq"]
+[ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_3fvqa"]
 [ext_resource type="Script" path="res://Pomme.gd" id="3_sxq4u"]
 [ext_resource type="Texture2D" uid="uid://k34xoutwnnjf" path="res://pngtree-apple-cartoon-png-image_5918123.png" id="4_ty80i"]
 [ext_resource type="Texture2D" uid="uid://bfdmurv7yhvxt" path="res://decor_terre.png" id="5_udmeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
-size = Vector2(427, 148)
+size = Vector2(177.5, 42)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b84ci"]
 radius = 154.77
@@ -19,11 +19,11 @@ position = Vector2(959, 541)
 script = ExtResource("1_rg00h")
 
 [node name="Coulisse" type="Sprite2D" parent="CouLisse"]
-position = Vector2(17, 1054)
-texture = ExtResource("2_botxq")
+position = Vector2(-20, 702)
+texture = ExtResource("2_3fvqa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CouLisse"]
-position = Vector2(-23, 136)
+position = Vector2(-22, 340)
 shape = SubResource("RectangleShape2D_hlefc")
 
 [node name="Control" type="Control" parent="."]
@@ -38,6 +38,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Pomme" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(0, 165)
 script = ExtResource("3_sxq4u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme"]
@@ -56,4 +57,5 @@ position = Vector2(0, -531)
 scale = Vector2(0.747852, 0.747852)
 texture = ExtResource("5_udmeg")
 
+[connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
