@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=15 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rg00h"]
 [ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_3fvqa"]
@@ -9,67 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="7_sqodk"]
 [ext_resource type="Texture2D" uid="uid://dsatwdx5uq8gw" path="res://Anim3_cou.png" id="8_q5mwv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jlfun"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_3fvqa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_vm7yd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_sqodk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_q5mwv")
-}],
-"loop": true,
-"name": &"gloups",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_3fvqa")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(177.5, 42)
-
-[sub_resource type="Animation" id="Animation_2wlp4"]
-resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_g2hjb"]
-resource_name = "gloups"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Coulisse:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_3fvqa"), ExtResource("6_vm7yd"), ExtResource("7_sqodk"), ExtResource("8_q5mwv")]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_6yuav"]
 length = 0.001
@@ -85,6 +26,36 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_3fvqa")]
 }
+
+[sub_resource type="Animation" id="Animation_g2hjb"]
+resource_name = "gloups"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coulisse:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_3fvqa"), ExtResource("6_vm7yd"), ExtResource("7_sqodk"), ExtResource("8_q5mwv"), ExtResource("8_q5mwv"), ExtResource("2_3fvqa")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_2wlp4"]
+resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_epy03"]
 _data = {
@@ -103,11 +74,6 @@ position = Vector2(959, 541)
 script = ExtResource("1_rg00h")
 animplayer = NodePath("AnimationPlayer")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CouLisse"]
-position = Vector2(-959, -541)
-sprite_frames = SubResource("SpriteFrames_jlfun")
-animation = &"idle"
-
 [node name="Coulisse" type="Sprite2D" parent="CouLisse"]
 position = Vector2(-20, 702)
 texture = ExtResource("2_3fvqa")
@@ -120,7 +86,6 @@ shape = SubResource("RectangleShape2D_hlefc")
 libraries = {
 "": SubResource("AnimationLibrary_epy03")
 }
-speed_scale = 5.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -155,3 +120,5 @@ texture = ExtResource("5_udmeg")
 
 [connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme" to="Pomme" method="_on_body_exited"]

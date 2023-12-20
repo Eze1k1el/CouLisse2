@@ -36,4 +36,8 @@ func _physics_process(delta):
 func _on_pomme_body_entered(body):
 	position.y -= 100
 	animplayer.play("gloups")
+	
+	
+
+
 
