@@ -1,15 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn3ky4hw725gj"]
+[gd_scene load_steps=7 format=3 uid="uid://cn3ky4hw725gj"]
 
-[ext_resource type="Script" path="res://Scor.gd" id="1_3yoha"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_bypxl"]
+[ext_resource type="Texture2D" uid="uid://k34xoutwnnjf" path="res://pngtree-apple-cartoon-png-image_5918123.png" id="2_npt81"]
+[ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_qnnof"]
+[ext_resource type="Script" path="res://Pngtree-apple-cartoon-png-image5918123.gd" id="3_uw8ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db8el"]
+size = Vector2(147, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gv5s"]
+radius = 147.447
 
 [node name="UiGame" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." groups=["Control"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1918.0
-offset_bottom = 1073.0
-script = ExtResource("1_3yoha")
+offset_left = -37.9999
+offset_top = -1.00006
+offset_right = 1880.0
+offset_bottom = 1072.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 0
@@ -26,13 +36,26 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "Score : 00"
 
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 1115.0
-offset_top = 629.0
-offset_right = 1768.0
-offset_bottom = 962.0
-theme_override_font_sizes/font_size = 150
-text = "ADD"
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["CouLisse"]]
+script = ExtResource("1_bypxl")
 
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(843, 1276)
+texture = ExtResource("2_qnnof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(847.5, 913)
+shape = SubResource("RectangleShape2D_db8el")
+
+[node name="Pngtree-apple-cartoon-png-image5918123" type="Area2D" parent="."]
+position = Vector2(1171, 901)
+scale = Vector2(0.522222, 0.522222)
+script = ExtResource("3_uw8ks")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pngtree-apple-cartoon-png-image5918123"]
+texture = ExtResource("2_npt81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pngtree-apple-cartoon-png-image5918123"]
+shape = SubResource("CircleShape2D_0gv5s")
+
+[connection signal="body_entered" from="Pngtree-apple-cartoon-png-image5918123" to="Pngtree-apple-cartoon-png-image5918123" method="_on_body_entered"]
