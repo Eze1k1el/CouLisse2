@@ -1,21 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://6ny5g2tkwfgv"]
 
 [ext_resource type="Script" path="res://satellite.gd" id="1_vph3m"]
-[ext_resource type="Texture2D" uid="uid://dhqdqr7fiscry" path="res://satellite.png" id="2_s5t6c"]
+[ext_resource type="Texture2D" uid="uid://caj033q6dwbm8" path="res://Satellite.png" id="2_nxmng"]
 [ext_resource type="AudioStream" uid="uid://dwpjoec1gcm88" path="res://audio_cou/bipbip_satellite.wav" id="3_q2w8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0si8s"]
-size = Vector2(472, 256)
+size = Vector2(170, 152)
 
 [node name="satellite" type="StaticBody2D"]
 script = ExtResource("1_vph3m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
+position = Vector2(-6, -22)
 shape = SubResource("RectangleShape2D_0si8s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_s5t6c")
+position = Vector2(15, -24)
+scale = Vector2(0.131094, 0.131094)
+texture = ExtResource("2_nxmng")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_q2w8v")

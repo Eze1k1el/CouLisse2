@@ -1,20 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfjmp3787432o"]
 
 [ext_resource type="Script" path="res://meteorite.gd" id="1_dx6d4"]
-[ext_resource type="Texture2D" uid="uid://c4735cb20s5vh" path="res://meteorite.png" id="1_we82h"]
+[ext_resource type="Texture2D" uid="uid://cyqo6j52lo7q7" path="res://Super météore de l’espace.PNG" id="2_knd8i"]
 [ext_resource type="AudioStream" uid="uid://6aoulht15y0s" path="res://audio_cou/meteor_ab.wav" id="3_s4ig7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3b2a"]
-size = Vector2(352, 352)
+size = Vector2(124, 126)
 
 [node name="Meteorite" type="StaticBody2D"]
 script = ExtResource("1_dx6d4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-28, -9)
 shape = SubResource("RectangleShape2D_o3b2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_we82h")
+position = Vector2(-44, -235)
+rotation = -1.5708
+scale = Vector2(0.339272, 0.339272)
+texture = ExtResource("2_knd8i")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s4ig7")

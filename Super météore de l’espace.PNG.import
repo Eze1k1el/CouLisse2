@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caj033q6dwbm8"
-path="res://.godot/imported/Satellite.png-da10e48d9a961818cb4a54ecf19ff318.ctex"
+uid="uid://cyqo6j52lo7q7"
+path="res://.godot/imported/Super météore de l’espace.PNG-f0ba4b59255c04f21b0cbd353e355db2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Satellite.png"
-dest_files=["res://.godot/imported/Satellite.png-da10e48d9a961818cb4a54ecf19ff318.ctex"]
+source_file="res://Super météore de l’espace.PNG"
+dest_files=["res://.godot/imported/Super météore de l’espace.PNG-f0ba4b59255c04f21b0cbd353e355db2.ctex"]
 
 [params]
 
