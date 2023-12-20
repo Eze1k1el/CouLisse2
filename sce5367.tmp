@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmtbjh4a0mkk"]
+[gd_scene load_steps=8 format=3 uid="uid://cmtbjh4a0mkk"]
 
 [ext_resource type="Script" path="res://giraffe_movement_auto.gd" id="1_n3elj"]
 [ext_resource type="Texture2D" uid="uid://dh6yg78xo17je" path="res://girafe_img/Girafe.PNG" id="2_7uej1"]
+[ext_resource type="Script" path="res://girafeflip.gd" id="3_5h232"]
 [ext_resource type="Texture2D" uid="uid://dtrxnx6h2vsik" path="res://girafe_img/Girafe uwu.PNG" id="3_rcdof"]
 [ext_resource type="Texture2D" uid="uid://be2vg7282u5gn" path="res://girafe_img/Keur bisou.PNG" id="4_c33h1"]
 [ext_resource type="Script" path="res://CoeurQuiBouge.gd" id="5_687d0"]
@@ -22,6 +23,7 @@ position = Vector2(-264, -40)
 rotation = -0.237365
 scale = Vector2(0.50468, 0.628947)
 texture = ExtResource("2_7uej1")
+script = ExtResource("3_5h232")
 
 [node name="Timerdescends" type="Timer" parent="."]
 wait_time = 1.5
