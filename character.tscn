@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=18 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rg00h"]
 [ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_3fvqa"]
 [ext_resource type="Script" path="res://Pomme.gd" id="3_sxq4u"]
-[ext_resource type="Texture2D" uid="uid://k34xoutwnnjf" path="res://pngtree-apple-cartoon-png-image_5918123.png" id="4_ty80i"]
 [ext_resource type="Texture2D" uid="uid://bfdmurv7yhvxt" path="res://decor_terre.png" id="5_udmeg"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="6_rekc8"]
 [ext_resource type="Texture2D" uid="uid://dgmgup1ewr10r" path="res://Anim1_cou.png" id="6_vm7yd"]
+[ext_resource type="Texture2D" uid="uid://djef2k2flkj0d" path="res://Pomme_Frames/Pomme 1.PNG" id="7_6hvn5"]
 [ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="7_sqodk"]
 [ext_resource type="Texture2D" uid="uid://dsatwdx5uq8gw" path="res://Anim3_cou.png" id="8_q5mwv"]
+[ext_resource type="Texture2D" uid="uid://cv5w0jorryuj" path="res://Pomme_Frames/Pomme3.PNG" id="9_4y24r"]
+[ext_resource type="Texture2D" uid="uid://dsx4hc5dbympb" path="res://Pomme_Frames/Pomme 2+4.PNG" id="10_lnl47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(177.5, 42)
@@ -65,7 +68,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b84ci"]
-radius = 154.77
+radius = 65.1153
 
 [node name="Character" type="Node2D"]
 position = Vector2(959, 541)
@@ -87,16 +90,8 @@ libraries = {
 "": SubResource("AnimationLibrary_epy03")
 }
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -14.0
-offset_top = -260.0
-offset_right = 502.0
-offset_bottom = -99.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("6_rekc8")
 
 [node name="Pomme" type="Area2D" parent="." groups=["Pomme"]]
 position = Vector2(0, 165)
@@ -107,8 +102,8 @@ position = Vector2(511, 130)
 shape = SubResource("CircleShape2D_b84ci")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pomme"]
-position = Vector2(514, 138)
-texture = ExtResource("4_ty80i")
+position = Vector2(961, -71)
+texture = ExtResource("7_6hvn5")
 
 [node name="Fond" type="Area2D" parent="."]
 
@@ -118,7 +113,39 @@ position = Vector2(0, -531)
 scale = Vector2(0.747852, 0.747852)
 texture = ExtResource("5_udmeg")
 
+[node name="Pomme2" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(0, 165)
+script = ExtResource("3_sxq4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme2"]
+position = Vector2(-555, 14)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme2"]
+position = Vector2(-128, -187)
+texture = ExtResource("9_4y24r")
+
+[node name="Pomme3" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(0, 165)
+script = ExtResource("3_sxq4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme3"]
+position = Vector2(681, -110)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme3"]
+position = Vector2(1119, -314)
+texture = ExtResource("10_lnl47")
+
 [connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
 [connection signal="body_exited" from="Pomme" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme" to="Pomme" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme2" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme2" to="Pomme2" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme2" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme2" to="Pomme2" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme3" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme3" to="Pomme3" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme3" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme3" to="Pomme3" method="_on_body_exited"]

@@ -1,11 +1,10 @@
 extends StaticBody2D
 
-var hmin = 750
-var hmax = 250
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AudioStreamPlayer2D.play()
 	position.x = -1000
+	position.y = randf_range(900, 200)
 	
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer2D.play()
