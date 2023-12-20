@@ -13,6 +13,7 @@ var display = ""
 var current_char = 0
 
 func _ready():
+	$AudioStreamPlayer2D.play()
 	start_dialogue()
 	
 func start_dialogue():
@@ -49,3 +50,7 @@ func _on_next_message_timeout():
 		current_char = 0
 		$"../next_char".start()
 
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()

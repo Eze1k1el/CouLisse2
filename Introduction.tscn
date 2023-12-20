@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://fff8f5fujdpi"]
+[gd_scene load_steps=4 format=3 uid="uid://fff8f5fujdpi"]
 
 [ext_resource type="Texture2D" uid="uid://cfevxyxlk4fwn" path="res://Godot_Guy.png" id="1_s00es"]
+[ext_resource type="AudioStream" uid="uid://biwaij8lh7iqy" path="res://audio_cou/blablabla.wav" id="3_4msqy"]
 [ext_resource type="Script" path="res://Label.gd" id="3_hcaeh"]
 
 [node name="Introduction" type="Node2D"]
@@ -23,9 +24,14 @@ autowrap_mode = 2
 justification_flags = 171
 script = ExtResource("3_hcaeh")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Label"]
+position = Vector2(-296, -658)
+stream = ExtResource("3_4msqy")
+
 [node name="next_char" type="Timer" parent="."]
 
 [node name="next_message" type="Timer" parent="."]
 
+[connection signal="finished" from="Label/AudioStreamPlayer2D" to="Label" method="_on_audio_stream_player_2d_finished"]
 [connection signal="timeout" from="next_char" to="Label" method="_on_next_char_timeout"]
 [connection signal="timeout" from="next_message" to="Label" method="_on_next_message_timeout"]
