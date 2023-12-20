@@ -1,16 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=17 format=3 uid="uid://blrlfqahrhfp2"]
 
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rg00h"]
-[ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_3fvqa"]
-[ext_resource type="Script" path="res://Pomme.gd" id="3_sxq4u"]
-[ext_resource type="Texture2D" uid="uid://bfdmurv7yhvxt" path="res://decor_terre.png" id="5_udmeg"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="6_rekc8"]
-[ext_resource type="Texture2D" uid="uid://dgmgup1ewr10r" path="res://Anim1_cou.png" id="6_vm7yd"]
-[ext_resource type="Texture2D" uid="uid://djef2k2flkj0d" path="res://Pomme_Frames/Pomme 1.PNG" id="7_6hvn5"]
-[ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="7_sqodk"]
-[ext_resource type="Texture2D" uid="uid://dsatwdx5uq8gw" path="res://Anim3_cou.png" id="8_q5mwv"]
-[ext_resource type="Texture2D" uid="uid://cv5w0jorryuj" path="res://Pomme_Frames/Pomme3.PNG" id="9_4y24r"]
-[ext_resource type="Texture2D" uid="uid://dsx4hc5dbympb" path="res://Pomme_Frames/Pomme 2+4.PNG" id="10_lnl47"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_nntv8"]
+[ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_fqqvu"]
+[ext_resource type="Texture2D" uid="uid://dgmgup1ewr10r" path="res://Anim1_cou.png" id="3_l772r"]
+[ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="4_o8ao6"]
+[ext_resource type="Texture2D" uid="uid://dsatwdx5uq8gw" path="res://Anim3_cou.png" id="5_1uya4"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="6_88ott"]
+[ext_resource type="Script" path="res://Pomme.gd" id="7_p7r4x"]
+[ext_resource type="Texture2D" uid="uid://djef2k2flkj0d" path="res://Pomme_Frames/Pomme 1.PNG" id="8_g6vk1"]
+[ext_resource type="Texture2D" uid="uid://bfdmurv7yhvxt" path="res://decor_terre.png" id="9_gyt6m"]
+[ext_resource type="Script" path="res://ScoreManager.gd" id="12_ifipy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(177.5, 42)
@@ -27,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_3fvqa")]
+"values": [ExtResource("2_fqqvu")]
 }
 
 [sub_resource type="Animation" id="Animation_g2hjb"]
@@ -43,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_3fvqa"), ExtResource("6_vm7yd"), ExtResource("7_sqodk"), ExtResource("8_q5mwv"), ExtResource("8_q5mwv"), ExtResource("2_3fvqa")]
+"values": [ExtResource("2_fqqvu"), ExtResource("3_l772r"), ExtResource("4_o8ao6"), ExtResource("5_1uya4"), ExtResource("5_1uya4"), ExtResource("2_fqqvu")]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -74,12 +73,12 @@ radius = 65.1153
 position = Vector2(959, 541)
 
 [node name="CouLisse" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animplayer") groups=["CouLisse"]]
-script = ExtResource("1_rg00h")
+script = ExtResource("1_nntv8")
 animplayer = NodePath("AnimationPlayer")
 
 [node name="Coulisse" type="Sprite2D" parent="CouLisse"]
 position = Vector2(-20, 702)
-texture = ExtResource("2_3fvqa")
+texture = ExtResource("2_fqqvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CouLisse"]
 position = Vector2(-22, 340)
@@ -91,11 +90,11 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("6_rekc8")
+script = ExtResource("6_88ott")
 
 [node name="Pomme" type="Area2D" parent="." groups=["Pomme"]]
 position = Vector2(0, 165)
-script = ExtResource("3_sxq4u")
+script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme"]
 position = Vector2(511, 130)
@@ -103,7 +102,43 @@ shape = SubResource("CircleShape2D_b84ci")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pomme"]
 position = Vector2(961, -71)
-texture = ExtResource("7_6hvn5")
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme2" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(231, 127)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme2"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme2"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme3" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-1179, -142)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme3"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme3"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme4" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-1179, -142)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme4"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme4"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
 
 [node name="Fond" type="Area2D" parent="."]
 
@@ -111,41 +146,34 @@ texture = ExtResource("7_6hvn5")
 z_index = -1
 position = Vector2(0, -531)
 scale = Vector2(0.747852, 0.747852)
-texture = ExtResource("5_udmeg")
+texture = ExtResource("9_gyt6m")
 
-[node name="Pomme2" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(0, 165)
-script = ExtResource("3_sxq4u")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme2"]
-position = Vector2(-555, 14)
-shape = SubResource("CircleShape2D_b84ci")
-
-[node name="Sprite2D" type="Sprite2D" parent="Pomme2"]
-position = Vector2(-128, -187)
-texture = ExtResource("9_4y24r")
-
-[node name="Pomme3" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(0, 165)
-script = ExtResource("3_sxq4u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme3"]
-position = Vector2(681, -110)
-shape = SubResource("CircleShape2D_b84ci")
-
-[node name="Sprite2D" type="Sprite2D" parent="Pomme3"]
-position = Vector2(1119, -314)
-texture = ExtResource("10_lnl47")
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 136
+text = "score"
+script = ExtResource("12_ifipy")
 
 [connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme" to="Pomme" method="_on_body_exited"]
 [connection signal="body_entered" from="Pomme2" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme2" to="Pomme2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme2" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme2" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme2" to="Pomme2" method="_on_body_exited"]
 [connection signal="body_entered" from="Pomme3" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme3" to="Pomme3" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme3" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme3" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme3" to="Pomme3" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme4" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme4" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme4" to="Pomme4" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme4" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme4" to="Pomme4" method="_on_body_exited"]

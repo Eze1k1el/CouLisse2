@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var score = 0
 var SPEED = 300.0
 var max_bottom_position = 100
+var baisser=0
 @export var animplayer: AnimationPlayer
 
 const JUMP_VELOCITY = -400.0
@@ -31,10 +31,12 @@ func _physics_process(delta):
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	if Input.is_action_pressed("ui_down"):
 		position.y += 3
+		baisser+=3
 	if position.y > max_bottom_position:
 		position.y = max_bottom_position
 	if  Input.is_action_just_released("ui_down"):
-		position.y = position.y -- max_bottom_position
+		position.y -= baisser
+		baisser=0
 
 
 
