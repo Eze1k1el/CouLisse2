@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=34 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_nntv8"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_to2bw"]
@@ -84,6 +84,48 @@ _data = {
 radius = 65.1153
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nciqm"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ees6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_32oj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rikg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jek2q")
+}],
+"loop": true,
+"name": &"Oizo_Animation",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nk5wr"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ees6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_32oj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rikg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jek2q")
+}],
+"loop": true,
+"name": &"Oizo_Animation",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aiejt"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -263,8 +305,18 @@ position = Vector2(-1628, -1971)
 [node name="SceneOiseau2" parent="." instance=ExtResource("17_jr7sn")]
 position = Vector2(-1548, -944)
 
+[node name="Oizo_Anim" parent="SceneOiseau2/OiseauBeau" index="0"]
+sprite_frames = SubResource("SpriteFrames_nk5wr")
+frame = 0
+frame_progress = 0.0
+
 [node name="SceneOiseau3" parent="." instance=ExtResource("17_jr7sn")]
 position = Vector2(-981, -1295)
+
+[node name="Oizo_Anim" parent="SceneOiseau3/OiseauBeau" index="0"]
+sprite_frames = SubResource("SpriteFrames_aiejt")
+frame = 0
+frame_progress = 0.0
 
 [node name="SceneAvion2" parent="." instance=ExtResource("24_wu7ou")]
 position = Vector2(-2013, -2623)
@@ -289,6 +341,15 @@ position = Vector2(-2013, -2623)
 [connection signal="body_entered" from="Pomme4" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme4" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme4" to="Pomme4" method="_on_body_exited"]
+[connection signal="body_entered" from="SceneOiseau/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="SceneOiseau/OiseauBeau" to="CanvasLayer/Score" method="_on_oiseau_beau_body_entered"]
 [connection signal="timeout" from="oiseauTimer" to="." method="_on_oiseau_timer_timeout"]
+[connection signal="body_entered" from="SceneAvion/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion/AvionAuto" to="SceneAvion/AvionAuto" method="_on_body_entered"]
+[connection signal="body_entered" from="SceneOiseau2/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
 
 [editable path="SceneOiseau"]
+[editable path="SceneAvion"]
+[editable path="SceneOiseau2"]
+[editable path="SceneOiseau3"]
+[editable path="SceneAvion2"]

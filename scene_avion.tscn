@@ -79,7 +79,7 @@ _data = {
 
 [node name="SceneAvion" type="Node2D"]
 
-[node name="AvionAuto" type="StaticBody2D" parent="."]
+[node name="AvionAuto" type="Area2D" parent="."]
 position = Vector2(128, 528)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_inn7v")

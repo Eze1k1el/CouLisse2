@@ -42,10 +42,10 @@ func _on_pomme_body_entered(body):
 	position.y -= 250
 	animplayer.play("gloups")
 
+func _on_oiseau_beau_body_entered(body):
+	position.y -= 250
+	animplayer.play("gloups")
 
-
-	
-	
-
-
-
+func _on_avion_auto_body_entered(body):
+	position.y -= 250
+	animplayer.play("gloups")
