@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var score = 0
 var SPEED = 300.0
+
+@export var animplayer: AnimationPlayer
+
 const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,3 +35,9 @@ func _physics_process(delta):
 
 func _on_pomme_body_entered(body):
 	position.y -= 100
+	animplayer.play("gloups")
+	
+	
+
+
+
