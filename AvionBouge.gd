@@ -4,7 +4,11 @@ var hmin = 750
 var hmax = 250
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AudioStreamPlayer2D.play()
+	position.x = -1000
+	
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer2D.play()
 
 #
 #func _get_h():
@@ -25,6 +29,5 @@ func _process(delta):
 		#position.y -= 10
 		#
 func _physics_process(delta):
-	if get_viewport().get_visible_rect().size.x + 100 <position.x :
+	if get_viewport().get_visible_rect().size.x + 1000 <position.x :
 		position.x = -1000
-
