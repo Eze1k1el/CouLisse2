@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=46 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_nntv8"]
 [ext_resource type="Script" path="res://MainScene.gd" id="1_to2bw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="4_o8ao6"]
 [ext_resource type="Texture2D" uid="uid://dsatwdx5uq8gw" path="res://Anim3_cou.png" id="5_1uya4"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_88ott"]
+[ext_resource type="AudioStream" uid="uid://bjr68jqha0r6e" path="res://Coulon_Zik.wav" id="7_0qt3c"]
 [ext_resource type="Script" path="res://Pomme.gd" id="7_p7r4x"]
 [ext_resource type="Texture2D" uid="uid://djef2k2flkj0d" path="res://Pomme_Frames/Pomme 1.PNG" id="8_g6vk1"]
 [ext_resource type="Texture2D" uid="uid://drouva4k1tgf1" path="res://Décors/decor_terre(1).png" id="9_wf6pd"]
@@ -24,6 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://lkqkcukje1g6" path="res://Oizo_frames/Oizo3.PNG" id="22_rikg3"]
 [ext_resource type="Texture2D" uid="uid://bistvn31y4syt" path="res://Oizo_frames/Oizo4.PNG" id="23_jek2q"]
 [ext_resource type="PackedScene" uid="uid://b00nxd0ropj8x" path="res://scene_avion.tscn" id="24_wu7ou"]
+[ext_resource type="Texture2D" uid="uid://5pricfj2lcx7" path="res://Décors/Lune.png" id="25_1a21t"]
+[ext_resource type="Texture2D" uid="uid://b3ocnriw1oby1" path="res://Décors/Saturne.png" id="26_xequq"]
+[ext_resource type="Texture2D" uid="uid://dapcp6du5yoae" path="res://Décors/Neptune.png" id="27_dca18"]
+[ext_resource type="PackedScene" uid="uid://cmtbjh4a0mkk" path="res://scene_giraffe.tscn" id="28_a888a"]
+[ext_resource type="PackedScene" uid="uid://dkm7abd38033l" path="res://scene_oiseau_shade.tscn" id="29_fsigo"]
+[ext_resource type="Texture2D" uid="uid://dwyasyr5l2pyw" path="res://Oizo_shading_frames/Oiseau_CS_1.png" id="30_a6rgy"]
+[ext_resource type="Texture2D" uid="uid://bmbk0h6xb7yox" path="res://Oizo_shading_frames/Oiseau_CS_2.png" id="31_kd8ff"]
+[ext_resource type="Texture2D" uid="uid://678h8grufyuw" path="res://Oizo_shading_frames/Oiseau_CS_3.png" id="32_oc84n"]
+[ext_resource type="Texture2D" uid="uid://dxkaj0760q521" path="res://Oizo_shading_frames/Oiseau_CS_4.png" id="33_hklk2"]
+[ext_resource type="PackedScene" uid="uid://6ny5g2tkwfgv" path="res://satellite.tscn" id="35_r6m06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(177.5, 42)
@@ -81,7 +92,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b84ci"]
-radius = 65.1153
+radius = 80.669
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nciqm"]
 resource_local_to_scene = true
@@ -146,6 +157,27 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w2kx"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_a6rgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kd8ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_oc84n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_hklk2")
+}],
+"loop": true,
+"name": &"Oizo_Animation",
+"speed": 8.0
+}]
+
 [node name="Character" type="Node2D"]
 position = Vector2(959, 541)
 script = ExtResource("1_to2bw")
@@ -167,11 +199,28 @@ libraries = {
 "": SubResource("AnimationLibrary_epy03")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CouLisse"]
+stream = ExtResource("7_0qt3c")
+
+[node name="Pomme7" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-900, -88)
+scale = Vector2(0.4096, 0.4096)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme7"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme7"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("6_88ott")
 
 [node name="Pomme" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(0, 165)
+position = Vector2(157, 38)
+scale = Vector2(0.48, 0.48)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme"]
@@ -183,7 +232,7 @@ position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
 [node name="Pomme2" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(231, 127)
+position = Vector2(226, 202)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme2"]
@@ -195,7 +244,8 @@ position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
 [node name="Pomme3" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(-1132, -192)
+position = Vector2(-442, -37)
+scale = Vector2(0.64, 0.64)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme3"]
@@ -206,8 +256,86 @@ shape = SubResource("CircleShape2D_b84ci")
 position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
+[node name="Pomme12" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(204, -864)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme12"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme12"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme13" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-914, -962)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme13"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme13"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme14" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-385, -1192)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme14"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme14"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme15" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(336, -1177)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme15"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme15"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme16" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-775, -1609)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme16"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme16"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme17" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(18, -1416)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme17"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme17"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
 [node name="Pomme4" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(-915, 32)
+position = Vector2(-815, -407)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme4"]
@@ -256,6 +384,11 @@ script = ExtResource("12_ifipy")
 [node name="DécorCiel" type="Area2D" parent="."]
 position = Vector2(-8, -1880)
 
+[node name="Nuage6" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(111, -1626)
+scale = Vector2(0.646615, 0.646615)
+texture = ExtResource("16_uegak")
+
 [node name="Montagnes" type="Sprite2D" parent="DécorCiel"]
 z_index = -3
 position = Vector2(-6.99999, 33.0312)
@@ -285,6 +418,22 @@ position = Vector2(96, -459)
 texture = ExtResource("14_uh6dx")
 flip_h = true
 
+[node name="Sprite2D" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(1144, -2211)
+scale = Vector2(0.725521, 0.725521)
+texture = ExtResource("16_uegak")
+
+[node name="Nuage7" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(-1249, -2093)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("14_uh6dx")
+flip_h = true
+
+[node name="Nuage8" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(787, -3588)
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("15_eegsl")
+
 [node name="SceneOiseau" parent="." instance=ExtResource("17_jr7sn")]
 position = Vector2(-1138, -338)
 scale = Vector2(1, 1.2)
@@ -302,6 +451,15 @@ frame_progress = 0.0
 [node name="SceneAvion" parent="." instance=ExtResource("24_wu7ou")]
 position = Vector2(-1628, -1971)
 
+[node name="SceneAvion2" parent="." instance=ExtResource("24_wu7ou")]
+position = Vector2(-2618, -2441)
+
+[node name="SceneAvion3" parent="." instance=ExtResource("24_wu7ou")]
+position = Vector2(-1922, -2899)
+
+[node name="SceneAvion4" parent="." instance=ExtResource("24_wu7ou")]
+position = Vector2(-2810, -3351)
+
 [node name="SceneOiseau2" parent="." instance=ExtResource("17_jr7sn")]
 position = Vector2(-1548, -944)
 
@@ -318,9 +476,127 @@ sprite_frames = SubResource("SpriteFrames_aiejt")
 frame = 0
 frame_progress = 0.0
 
-[node name="SceneAvion2" parent="." instance=ExtResource("24_wu7ou")]
-position = Vector2(-2013, -2623)
+[node name="DécorEspace" type="Area2D" parent="."]
 
+[node name="Lune" type="Sprite2D" parent="DécorEspace"]
+position = Vector2(365, -6448)
+scale = Vector2(0.209347, 0.209347)
+texture = ExtResource("25_1a21t")
+
+[node name="Saturne" type="Sprite2D" parent="DécorEspace"]
+position = Vector2(969, -7435)
+scale = Vector2(0.528704, 0.528704)
+texture = ExtResource("26_xequq")
+
+[node name="Sprite2D" type="Sprite2D" parent="DécorEspace"]
+position = Vector2(-438, -6936)
+scale = Vector2(0.134259, 0.134259)
+texture = ExtResource("27_dca18")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DécorEspace"]
+position = Vector2(-768, -7528)
+scale = Vector2(0.133333, 0.133333)
+texture = ExtResource("25_1a21t")
+flip_h = true
+
+[node name="Pomme5" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(343, -217)
+scale = Vector2(0.5328, 0.5328)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme5"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme5"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme6" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(240, -284)
+scale = Vector2(0.262144, 0.262144)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme6"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme6"]
+position = Vector2(965.118, -72.4792)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme11" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-32, -620)
+scale = Vector2(0.262144, 0.262144)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme11"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme11"]
+position = Vector2(965.118, -72.4792)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme8" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(-660, -316)
+scale = Vector2(0.167772, 0.167772)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme8"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme8"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme9" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(253, -418)
+scale = Vector2(0.167772, 0.167772)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme9"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme9"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="Pomme10" type="Area2D" parent="." groups=["Pomme"]]
+position = Vector2(744, -434)
+scale = Vector2(0.167772, 0.167772)
+script = ExtResource("7_p7r4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme10"]
+position = Vector2(511, 130)
+shape = SubResource("CircleShape2D_b84ci")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pomme10"]
+position = Vector2(961, -71)
+texture = ExtResource("8_g6vk1")
+
+[node name="giraffe" parent="." instance=ExtResource("28_a888a")]
+position = Vector2(500, 223)
+
+[node name="SceneOiseau4" parent="." instance=ExtResource("29_fsigo")]
+position = Vector2(-1006, -874)
+
+[node name="Oizo_Anim" parent="SceneOiseau4/OiseauBeau" index="0"]
+sprite_frames = SubResource("SpriteFrames_5w2kx")
+frame_progress = 0.0
+
+[node name="satellite" parent="." instance=ExtResource("35_r6m06")]
+z_index = 5
+position = Vector2(53, -330)
+
+[connection signal="finished" from="CouLisse/AudioStreamPlayer2D" to="CouLisse" method="_on_audio_stream_player_2d_finished"]
+[connection signal="body_entered" from="Pomme7" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme7" to="Pomme7" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme7" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme7" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme7" to="Pomme7" method="_on_body_exited"]
 [connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
 [connection signal="body_entered" from="Pomme" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
@@ -336,6 +612,36 @@ position = Vector2(-2013, -2623)
 [connection signal="body_entered" from="Pomme3" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme3" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme3" to="Pomme3" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme12" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme12" to="Pomme12" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme12" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme12" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme12" to="Pomme12" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme13" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme13" to="Pomme13" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme13" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme13" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme13" to="Pomme13" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme14" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme14" to="Pomme14" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme14" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme14" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme14" to="Pomme14" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme15" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme15" to="Pomme15" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme15" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme15" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme15" to="Pomme15" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme16" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme16" to="Pomme16" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme16" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme16" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme16" to="Pomme16" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme17" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme17" to="Pomme17" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme17" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_exited" from="Pomme17" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme17" to="Pomme17" method="_on_body_exited"]
 [connection signal="body_entered" from="Pomme4" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme4" to="Pomme4" method="_on_body_entered"]
 [connection signal="body_entered" from="Pomme4" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
@@ -346,10 +652,53 @@ position = Vector2(-2013, -2623)
 [connection signal="timeout" from="oiseauTimer" to="." method="_on_oiseau_timer_timeout"]
 [connection signal="body_entered" from="SceneAvion/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion/AvionAuto" to="SceneAvion/AvionAuto" method="_on_body_entered"]
+[connection signal="body_entered" from="SceneAvion2/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion2/AvionAuto" to="SceneAvion2/AvionAuto" method="_on_body_entered"]
+[connection signal="body_entered" from="SceneAvion3/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion3/AvionAuto" to="SceneAvion3/AvionAuto" method="_on_body_entered"]
+[connection signal="body_entered" from="SceneAvion4/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion4/AvionAuto" to="SceneAvion4/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneOiseau2/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="Pomme5" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme5" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme5" to="Pomme5" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme5" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme5" to="Pomme5" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme6" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme6" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme6" to="Pomme6" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme6" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme6" to="Pomme6" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme11" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme11" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme11" to="Pomme11" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme11" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme11" to="Pomme11" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme8" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme8" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme8" to="Pomme8" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme8" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme8" to="Pomme8" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme9" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme9" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme9" to="Pomme9" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme9" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme9" to="Pomme9" method="_on_body_exited"]
+[connection signal="body_entered" from="Pomme10" to="CouLisse" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme10" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
+[connection signal="body_entered" from="Pomme10" to="Pomme10" method="_on_body_entered"]
+[connection signal="body_exited" from="Pomme10" to="CouLisse" method="_on_pomme_body_exited"]
+[connection signal="body_exited" from="Pomme10" to="Pomme10" method="_on_body_exited"]
+[connection signal="body_entered" from="SceneOiseau4/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="satellite" to="CouLisse" method="_on_satellite_body_entered"]
+[connection signal="body_entered" from="satellite" to="satellite" method="_on_body_entered"]
 
 [editable path="SceneOiseau"]
 [editable path="SceneAvion"]
+[editable path="SceneAvion2"]
+[editable path="SceneAvion3"]
+[editable path="SceneAvion4"]
 [editable path="SceneOiseau2"]
 [editable path="SceneOiseau3"]
-[editable path="SceneAvion2"]
+[editable path="giraffe"]
+[editable path="SceneOiseau4"]

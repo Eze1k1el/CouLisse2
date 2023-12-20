@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 var variable_mult = -1
 var TimerStart = true
 var FlipFlip = true

@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iffye"]
 size = Vector2(34, 640)
 
-[node name="giraffe" type="StaticBody2D"]
+[node name="giraffe" type="Area2D"]
 position = Vector2(1488, 1472)
 script = ExtResource("1_n3elj")
 

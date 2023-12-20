@@ -10,7 +10,9 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 0;
 
-
+func _ready():
+	$AudioStreamPlayer2D.play()
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -28,24 +30,46 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
-	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	if Input.is_action_pressed("ui_down"):
 		position.y += 10
 		baisser+=10
+	if Input.is_action_pressed("ui_up"):
+		position.y -= 10
+		baisser-=10
 	if position.y > max_bottom_position:
 		position.y = max_bottom_position
-	if  Input.is_action_just_released("ui_down"):
-		position.y -= baisser
-		baisser=0
+	#if  Input.is_action_just_released("ui_down"):
+		#position.y -= baisser
+		#baisser=0
 
 func _on_pomme_body_entered(body):
-	position.y -= 250
+	position.y -= 50
 	animplayer.play("gloups")
 
 func _on_oiseau_beau_body_entered(body):
-	position.y -= 250
+	position.y -= 50
 	animplayer.play("gloups")
 
 func _on_avion_auto_body_entered(body):
-	position.y -= 250
+	position.y -= 50
 	animplayer.play("gloups")
+
+
+
+
+
+
+
+func _on_meteorite_body_entered(body):
+	position.y -= 50
+	animplayer.play("gloups")
+
+
+func _on_satellite_body_entered(body):
+	position.y -= 50
+	animplayer.play("gloups")
+	
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()

@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 var depx = randf_range(-7, 7)
 
@@ -15,3 +15,12 @@ func _ready():
 func _physics_process(delta):
 		position.x += depx
 		position.y += 10
+
+
+
+
+
+
+func _on_body_entered(body):
+	if body.is_in_group("CouLisse"):
+		queue_free()

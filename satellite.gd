@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 var speed=1
 
 
@@ -20,3 +20,8 @@ func _process(delta):
 func _physics_process(delta):
 	if position.x < -750 :
 		position.x = 2670
+
+
+func _on_body_entered(body):
+	if body.is_in_group("CouLisse"):
+		queue_free()
