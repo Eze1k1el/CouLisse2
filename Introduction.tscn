@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fff8f5fujdpi"]
 
-[ext_resource type="Texture2D" uid="uid://cfevxyxlk4fwn" path="res://Godot_Guy.png" id="1_s00es"]
+[ext_resource type="Texture2D" uid="uid://ben33sibqdkjj" path="res://Godot Guy.png" id="1_ep45y"]
 [ext_resource type="AudioStream" uid="uid://biwaij8lh7iqy" path="res://audio_cou/blablabla.wav" id="3_4msqy"]
 [ext_resource type="Script" path="res://Label.gd" id="3_hcaeh"]
 
@@ -10,7 +10,7 @@
 z_index = -1
 position = Vector2(960, 441)
 scale = Vector2(0.623543, 0.564095)
-texture = ExtResource("1_s00es")
+texture = ExtResource("1_ep45y")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 296.0
