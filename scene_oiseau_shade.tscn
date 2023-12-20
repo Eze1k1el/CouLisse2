@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkm7abd38033l"]
+
+[ext_resource type="Script" path="res://OiseauBouge.gd" id="1_4hh8y"]
+[ext_resource type="Texture2D" uid="uid://dwyasyr5l2pyw" path="res://Oizo_shading_frames/Oiseau_CS_1.png" id="2_kukxn"]
+[ext_resource type="Texture2D" uid="uid://bmbk0h6xb7yox" path="res://Oizo_shading_frames/Oiseau_CS_2.png" id="3_yr3kn"]
+[ext_resource type="Texture2D" uid="uid://678h8grufyuw" path="res://Oizo_shading_frames/Oiseau_CS_3.png" id="4_skafe"]
+[ext_resource type="Texture2D" uid="uid://dxkaj0760q521" path="res://Oizo_shading_frames/Oiseau_CS_4.png" id="5_vr82s"]
+[ext_resource type="AudioStream" uid="uid://8nwqpl6yeh82" path="res://audio_cou/cuicui.wav" id="6_afbaf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66185"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kukxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yr3kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_skafe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vr82s")
+}],
+"loop": true,
+"name": &"Oizo_Animation",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kvml"]
+size = Vector2(288, 224)
+
+[node name="SceneOiseau" type="Node2D"]
+
+[node name="OiseauBeau" type="StaticBody2D" parent="."]
+position = Vector2(-72, 280)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_4hh8y")
+
+[node name="Oizo_Anim" type="AnimatedSprite2D" parent="OiseauBeau"]
+process_mode = 3
+position = Vector2(480, 288)
+sprite_frames = SubResource("SpriteFrames_66185")
+animation = &"Oizo_Animation"
+frame_progress = 0.963047
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OiseauBeau"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_5kvml")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OiseauBeau"]
+stream = ExtResource("6_afbaf")
+
+[connection signal="finished" from="OiseauBeau/AudioStreamPlayer2D" to="OiseauBeau" method="_on_audio_stream_player_2d_finished"]

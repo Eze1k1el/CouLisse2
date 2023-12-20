@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcc1mgl2bcxtd"]
+
+[ext_resource type="Script" path="res://giraffe_movement_auto.gd" id="1_r544e"]
+[ext_resource type="Texture2D" uid="uid://d0nv67wrfqjny" path="res://girafe_espace_img/Girafe astre.PNG" id="2_h4olw"]
+[ext_resource type="Texture2D" uid="uid://b8ldm6s62d15e" path="res://girafe_espace_img/Girafe astre blushy.PNG" id="3_6kynv"]
+[ext_resource type="Texture2D" uid="uid://be2vg7282u5gn" path="res://girafe_img/Keur bisou.PNG" id="4_i5ea8"]
+[ext_resource type="Script" path="res://CoeurQuiBouge.gd" id="5_0dgsp"]
+[ext_resource type="AudioStream" uid="uid://cakxsqx5rq3ml" path="res://audio_cou/giraffe_ab.wav" id="6_gq8tf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iffye"]
+size = Vector2(34, 640)
+
+[node name="giraffe" type="StaticBody2D"]
+position = Vector2(1488, 1472)
+script = ExtResource("1_r544e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -64)
+shape = SubResource("RectangleShape2D_iffye")
+
+[node name="SpriteGirafe" type="Sprite2D" parent="."]
+position = Vector2(-40, -168)
+rotation = -0.237365
+scale = Vector2(0.50468, 0.628947)
+texture = ExtResource("2_h4olw")
+
+[node name="Timerdescends" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="SpriteGirafeUwu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-264, -40)
+rotation = -0.237365
+scale = Vector2(0.505, 0.629)
+texture = ExtResource("3_6kynv")
+
+[node name="SpriteCoeur" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-160, -256)
+texture = ExtResource("4_i5ea8")
+script = ExtResource("5_0dgsp")
+
+[node name="Timerflip" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gq8tf")
+
+[connection signal="timeout" from="Timerdescends" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timerflip" to="." method="_on_timerflip_timeout"]
