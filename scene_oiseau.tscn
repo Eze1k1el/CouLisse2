@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kvml"]
-size = Vector2(576, 576)
+size = Vector2(224, 128)
 
 [node name="SceneOiseau" type="Node2D"]
 
@@ -47,6 +47,7 @@ frame = 1
 frame_progress = 0.963047
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OiseauBeau"]
+position = Vector2(16, 32)
 shape = SubResource("RectangleShape2D_5kvml")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OiseauBeau"]

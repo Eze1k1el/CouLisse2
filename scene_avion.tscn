@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b00nxd0ropj8x"]
 
 [ext_resource type="Script" path="res://AvionBouge.gd" id="1_inn7v"]
-[ext_resource type="Texture2D" uid="uid://l7dnfye0h861" path="res://aviondegueu.png" id="2_tf0hb"]
+[ext_resource type="Texture2D" uid="uid://baoexbxs853gu" path="res://Avion.PNG" id="2_2rsw0"]
 [ext_resource type="AudioStream" uid="uid://b3xa8ipsrqrnw" path="res://audio_cou/vroum_ab.wav" id="3_4ytkf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v8l6"]
@@ -89,7 +89,10 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_7v8l6")
 
 [node name="Sprite2D" type="Sprite2D" parent="AvionAuto"]
-texture = ExtResource("2_tf0hb")
+position = Vector2(800, 368)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_2rsw0")
+flip_h = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AvionAuto"]
 stream = ExtResource("3_4ytkf")
