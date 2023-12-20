@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6ny5g2tkwfgv"]
 
 [ext_resource type="Script" path="res://satellite.gd" id="1_vph3m"]
-[ext_resource type="Texture2D" uid="uid://caj033q6dwbm8" path="res://Satellite.png" id="2_nxmng"]
+[ext_resource type="Texture2D" uid="uid://caj033q6dwbm8" path="res://satellite.png" id="2_nxmng"]
 [ext_resource type="AudioStream" uid="uid://dwpjoec1gcm88" path="res://audio_cou/bipbip_satellite.wav" id="3_q2w8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0si8s"]
