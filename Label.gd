@@ -49,6 +49,7 @@ func _on_next_message_timeout():
 		display = ""
 		current_char = 0
 		$"../next_char".start()
+		#get_tree().change_scene("res://character.tscn")
 
 
 
