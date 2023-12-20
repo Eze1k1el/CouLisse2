@@ -2,7 +2,7 @@ extends StaticBody2D
 var variable_mult = -1
 var TimerStart = true
 var FlipFlip = true
-var hauteurgiraffe = randf_range(800, 1200)
+var hauteurgiraffe = randf_range(840, 1200)
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
