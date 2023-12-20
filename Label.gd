@@ -49,7 +49,9 @@ func _on_next_message_timeout():
 		display = ""
 		current_char = 0
 		$"../next_char".start()
-		#get_tree().change_scene("res://character.tscn")
+	
+	if (current_message == 5):
+		get_tree().change_scene_to_file("res://MainScene.tscn")
 
 
 
