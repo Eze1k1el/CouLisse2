@@ -6,6 +6,7 @@ var hauteurgiraffe = randf_range(840, 1200)
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	$AudioStreamPlayer2D.play()
 	position.x=randf_range(200, 1800)
 	pass # Replace with function body.
 func _process(delta):

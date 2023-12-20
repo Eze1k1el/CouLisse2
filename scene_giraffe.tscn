@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmtbjh4a0mkk"]
+[gd_scene load_steps=8 format=3 uid="uid://cmtbjh4a0mkk"]
 
 [ext_resource type="Script" path="res://giraffe_movement_auto.gd" id="1_n3elj"]
 [ext_resource type="Texture2D" uid="uid://dh6yg78xo17je" path="res://girafe_img/Girafe.PNG" id="2_7uej1"]
 [ext_resource type="Texture2D" uid="uid://dtrxnx6h2vsik" path="res://girafe_img/Girafe uwu.PNG" id="3_rcdof"]
 [ext_resource type="Texture2D" uid="uid://be2vg7282u5gn" path="res://girafe_img/Keur bisou.PNG" id="4_c33h1"]
 [ext_resource type="Script" path="res://CoeurQuiBouge.gd" id="5_687d0"]
+[ext_resource type="AudioStream" uid="uid://cakxsqx5rq3ml" path="res://audio_cou/giraffe_ab.wav" id="6_4gfc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iffye"]
 size = Vector2(34, 640)
@@ -41,6 +42,9 @@ texture = ExtResource("4_c33h1")
 script = ExtResource("5_687d0")
 
 [node name="Timerflip" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4gfc6")
 
 [connection signal="timeout" from="Timerdescends" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timerflip" to="." method="_on_timerflip_timeout"]
