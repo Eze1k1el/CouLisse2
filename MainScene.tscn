@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://blrlfqahrhfp2"]
+[gd_scene load_steps=32 format=3 uid="uid://blrlfqahrhfp2"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_nntv8"]
+[ext_resource type="Script" path="res://MainScene.gd" id="1_to2bw"]
 [ext_resource type="Texture2D" uid="uid://kodmaumdgo8" path="res://Cou normal.png" id="2_fqqvu"]
 [ext_resource type="Texture2D" uid="uid://dgmgup1ewr10r" path="res://Anim1_cou.png" id="3_l772r"]
 [ext_resource type="Texture2D" uid="uid://qtrse5cywux0" path="res://Anim2_cou.png" id="4_o8ao6"]
@@ -8,8 +9,21 @@
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_88ott"]
 [ext_resource type="Script" path="res://Pomme.gd" id="7_p7r4x"]
 [ext_resource type="Texture2D" uid="uid://djef2k2flkj0d" path="res://Pomme_Frames/Pomme 1.PNG" id="8_g6vk1"]
-[ext_resource type="Texture2D" uid="uid://bfdmurv7yhvxt" path="res://decor_terre.png" id="9_gyt6m"]
+[ext_resource type="Texture2D" uid="uid://drouva4k1tgf1" path="res://Décors/decor_terre(1).png" id="9_wf6pd"]
+[ext_resource type="Texture2D" uid="uid://bh6l2btfy681x" path="res://Décors/Fond total.PNG" id="10_7drqq"]
+[ext_resource type="Texture2D" uid="uid://d0unv4he14i3m" path="res://Décors/decor_terre_fond.png" id="11_tau2i"]
 [ext_resource type="Script" path="res://ScoreManager.gd" id="12_ifipy"]
+[ext_resource type="FontFile" uid="uid://chrnxvwnflw0b" path="res://Décors/Funny.ttf" id="13_b6keh"]
+[ext_resource type="Texture2D" uid="uid://bi8v5ccs62x5y" path="res://Décors/Montagnes.png" id="13_julup"]
+[ext_resource type="Texture2D" uid="uid://btuf5yx0bj2lw" path="res://Décors/Nuage 1.PNG" id="14_uh6dx"]
+[ext_resource type="Texture2D" uid="uid://dctopsprrld1v" path="res://Décors/Nuage 3.PNG" id="15_eegsl"]
+[ext_resource type="Texture2D" uid="uid://cxgeppgeuptel" path="res://Décors/Nuage 2.PNG" id="16_uegak"]
+[ext_resource type="PackedScene" uid="uid://ibx6livdm4d0" path="res://scene_oiseau.tscn" id="17_jr7sn"]
+[ext_resource type="Texture2D" uid="uid://bt0ninh64w0da" path="res://Oizo_frames/Oizo1.png" id="20_ees6u"]
+[ext_resource type="Texture2D" uid="uid://begy4c1ecx4tw" path="res://Oizo_frames/Oizo 2.png" id="21_32oj5"]
+[ext_resource type="Texture2D" uid="uid://lkqkcukje1g6" path="res://Oizo_frames/Oizo3.PNG" id="22_rikg3"]
+[ext_resource type="Texture2D" uid="uid://bistvn31y4syt" path="res://Oizo_frames/Oizo4.PNG" id="23_jek2q"]
+[ext_resource type="PackedScene" uid="uid://b00nxd0ropj8x" path="res://scene_avion.tscn" id="24_wu7ou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlefc"]
 size = Vector2(177.5, 42)
@@ -69,8 +83,30 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b84ci"]
 radius = 65.1153
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nciqm"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ees6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_32oj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rikg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jek2q")
+}],
+"loop": true,
+"name": &"Oizo_Animation",
+"speed": 8.0
+}]
+
 [node name="Character" type="Node2D"]
 position = Vector2(959, 541)
+script = ExtResource("1_to2bw")
 
 [node name="CouLisse" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animplayer") groups=["CouLisse"]]
 script = ExtResource("1_nntv8")
@@ -117,7 +153,7 @@ position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
 [node name="Pomme3" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(-1179, -142)
+position = Vector2(-1132, -192)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme3"]
@@ -129,7 +165,7 @@ position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
 [node name="Pomme4" type="Area2D" parent="." groups=["Pomme"]]
-position = Vector2(-1179, -142)
+position = Vector2(-915, 32)
 script = ExtResource("7_p7r4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pomme4"]
@@ -140,22 +176,98 @@ shape = SubResource("CircleShape2D_b84ci")
 position = Vector2(961, -71)
 texture = ExtResource("8_g6vk1")
 
-[node name="Fond" type="Area2D" parent="."]
+[node name="DécorDeLaterre" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Fond"]
+[node name="PremierPlan" type="Sprite2D" parent="DécorDeLaterre"]
 z_index = -1
 position = Vector2(0, -531)
 scale = Vector2(0.747852, 0.747852)
-texture = ExtResource("9_gyt6m")
+texture = ExtResource("9_wf6pd")
+
+[node name="DernierPlan" type="Sprite2D" parent="DécorDeLaterre"]
+z_index = -10
+position = Vector2(1, -4366)
+texture = ExtResource("10_7drqq")
+
+[node name="SecondPlan" type="Sprite2D" parent="DécorDeLaterre"]
+z_index = -2
+position = Vector2(0, -531)
+scale = Vector2(0.748, 0.748)
+texture = ExtResource("11_tau2i")
+
+[node name="NuageCache" type="Sprite2D" parent="DécorDeLaterre"]
+z_index = -2
+position = Vector2(295, -1336)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("16_uegak")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("13_b6keh")
 theme_override_font_sizes/font_size = 136
 text = "score"
 script = ExtResource("12_ifipy")
+
+[node name="DécorCiel" type="Area2D" parent="."]
+position = Vector2(-8, -1880)
+
+[node name="Montagnes" type="Sprite2D" parent="DécorCiel"]
+z_index = -3
+position = Vector2(-6.99999, 33.0312)
+scale = Vector2(1.0094, 1.16672)
+texture = ExtResource("13_julup")
+
+[node name="Nuage1" type="Sprite2D" parent="DécorCiel"]
+z_index = -4
+position = Vector2(-12, 323)
+texture = ExtResource("14_uh6dx")
+
+[node name="Nuage2" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(-32, -391)
+texture = ExtResource("15_eegsl")
+
+[node name="Nuage3" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(1308, -470)
+texture = ExtResource("16_uegak")
+
+[node name="Nuage4" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(-1226, -1069)
+texture = ExtResource("16_uegak")
+flip_h = true
+
+[node name="Nuage5" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(96, -459)
+texture = ExtResource("14_uh6dx")
+flip_h = true
+
+[node name="SceneOiseau" parent="." instance=ExtResource("17_jr7sn")]
+position = Vector2(-1138, -338)
+scale = Vector2(1, 1.2)
+
+[node name="OiseauBeau" parent="SceneOiseau" index="0"]
+position = Vector2(52, 213.333)
+
+[node name="Oizo_Anim" parent="SceneOiseau/OiseauBeau" index="0"]
+sprite_frames = SubResource("SpriteFrames_nciqm")
+frame = 0
+frame_progress = 0.0
+
+[node name="oiseauTimer" type="Timer" parent="."]
+
+[node name="SceneAvion" parent="." instance=ExtResource("24_wu7ou")]
+position = Vector2(-1628, -1971)
+
+[node name="SceneOiseau2" parent="." instance=ExtResource("17_jr7sn")]
+position = Vector2(-1548, -944)
+
+[node name="SceneOiseau3" parent="." instance=ExtResource("17_jr7sn")]
+position = Vector2(-981, -1295)
+
+[node name="SceneAvion2" parent="." instance=ExtResource("24_wu7ou")]
+position = Vector2(-2013, -2623)
 
 [connection signal="body_entered" from="Pomme" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme" to="Pomme" method="_on_body_entered"]
@@ -173,7 +285,10 @@ script = ExtResource("12_ifipy")
 [connection signal="body_exited" from="Pomme3" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme3" to="Pomme3" method="_on_body_exited"]
 [connection signal="body_entered" from="Pomme4" to="CouLisse" method="_on_pomme_body_entered"]
-[connection signal="body_entered" from="Pomme4" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme4" to="Pomme4" method="_on_body_entered"]
+[connection signal="body_entered" from="Pomme4" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_exited" from="Pomme4" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme4" to="Pomme4" method="_on_body_exited"]
+[connection signal="timeout" from="oiseauTimer" to="." method="_on_oiseau_timer_timeout"]
+
+[editable path="SceneOiseau"]

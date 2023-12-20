@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 const SPEED = 100
 var vertical = 1
@@ -27,4 +27,7 @@ func _physics_process(delta):
 	
 	if (get_viewport().get_visible_rect().size.x + 100 < position.x):
 		position.x = -500
-
+		
+func _on_body_entered(body):
+	if body.is_in_group("CouLisse"):
+		queue_free()

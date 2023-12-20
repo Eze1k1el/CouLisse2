@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 300.0
+var SPEED = 500.0
 var max_bottom_position = 100
 var baisser=0
 @export var animplayer: AnimationPlayer
@@ -30,19 +30,20 @@ func _physics_process(delta):
 	move_and_slide()
 	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 	if Input.is_action_pressed("ui_down"):
-		position.y += 3
-		baisser+=3
+		position.y += 10
+		baisser+=10
 	if position.y > max_bottom_position:
 		position.y = max_bottom_position
 	if  Input.is_action_just_released("ui_down"):
 		position.y -= baisser
 		baisser=0
 
-
-
 func _on_pomme_body_entered(body):
-	position.y -= 100
+	position.y -= 250
 	animplayer.play("gloups")
+
+
+
 	
 	
 
