@@ -52,7 +52,7 @@ shape = SubResource("RectangleShape2D_5kvml")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OiseauBeau"]
 stream = ExtResource("6_4fnpn")
-volume_db = -5.0
+volume_db = -15.0
 
 [connection signal="body_entered" from="OiseauBeau" to="OiseauBeau" method="_on_body_entered"]
 [connection signal="finished" from="OiseauBeau/AudioStreamPlayer2D" to="OiseauBeau" method="_on_audio_stream_player_2d_finished"]

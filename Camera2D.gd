@@ -1,6 +1,6 @@
 extends Camera2D
 
-var speed = 0.5
+var speed = 3
 
 func _process(delta):
 	position.y -= speed
