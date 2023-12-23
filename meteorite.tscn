@@ -24,4 +24,7 @@ texture = ExtResource("2_knd8i")
 stream = ExtResource("3_s4ig7")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
