@@ -26,3 +26,8 @@ func _on_body_entered(body):
 		queue_free()
 	if body.is_in_group("DécorEspace"):
 		queue_free()
+
+func _process(delta):
+	var timer = Timer.new()
+	timer.set_wait_time(4000)
+	timer.start()
