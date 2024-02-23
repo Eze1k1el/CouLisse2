@@ -20,6 +20,8 @@ func _process(delta):
 func _physics_process(delta):
 	if position.x < -750 :
 		position.x = 2670
+	if get_viewport().get_visible_rect().size.x + 1000 <position.x :
+		position.x = -1000
 
 
 func _on_body_entered(body):

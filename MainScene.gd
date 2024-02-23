@@ -7,3 +7,4 @@ extends Node2D
 @export var scene_oiseau_shade: PackedScene
 @export var satellite: PackedScene
 @export var Meteorite: PackedScene
+@export var SceneAvion_Reversed: PackedScene

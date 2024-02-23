@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4d2865oco1cc"]
+
+[ext_resource type="Script" path="res://AvionAuto_reversed.gd" id="1_7mft6"]
+[ext_resource type="Texture2D" uid="uid://baoexbxs853gu" path="res://Avion.PNG" id="2_dl0mx"]
+[ext_resource type="AudioStream" uid="uid://b3xa8ipsrqrnw" path="res://audio_cou/vroum_ab.wav" id="3_if6gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v8l6"]
+size = Vector2(550, 248)
+
+[sub_resource type="Animation" id="Animation_mqqj1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pkud1"]
+resource_name = "bruit"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0e64e"]
+_data = {
+"RESET": SubResource("Animation_mqqj1"),
+"bruit": SubResource("Animation_pkud1")
+}
+
+[node name="SceneAvion_Reversed" type="Node2D"]
+
+[node name="AvionAuto" type="Area2D" parent="."]
+position = Vector2(128, 528)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_7mft6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvionAuto"]
+position = Vector2(1617, 12)
+shape = SubResource("RectangleShape2D_7v8l6")
+
+[node name="Sprite2D" type="Sprite2D" parent="AvionAuto"]
+position = Vector2(800, 368)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_dl0mx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AvionAuto"]
+stream = ExtResource("3_if6gp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_0e64e")
+}
+autoplay = "bruit"

@@ -43,32 +43,25 @@ func _physics_process(delta):
 		#baisser=0
 
 func _on_pomme_body_entered(body):
-	position.y -= 50
 	animplayer.play("gloups")
+	$AudioStreamPlayer2D2.play()
 
 func _on_oiseau_beau_body_entered(body):
-	position.y -= 50
 	animplayer.play("gloups")
+	$AudioStreamPlayer2D2.play()
 
 func _on_avion_auto_body_entered(body):
-	position.y -= 50
 	animplayer.play("gloups")
-
-
-
-
-
-
+	$AudioStreamPlayer2D2.play()
 
 func _on_meteorite_body_entered(body):
-	position.y -= 50
 	animplayer.play("gloups")
+	$AudioStreamPlayer2D2.play()
 
 
 func _on_satellite_body_entered(body):
-	position.y -= 50
 	animplayer.play("gloups")
-	
+	$AudioStreamPlayer2D2.play()
 
 
 func _on_audio_stream_player_2d_finished():
