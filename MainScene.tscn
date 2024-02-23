@@ -187,6 +187,8 @@ animations = [{
 [node name="Character" type="Node2D"]
 position = Vector2(959, 541)
 script = ExtResource("1_to2bw")
+metadata/_edit_horizontal_guides_ = [-5770.0]
+metadata/_edit_vertical_guides_ = [2104.0]
 
 [node name="CouLisse" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animplayer") groups=["CouLisse"]]
 script = ExtResource("1_nntv8")
@@ -412,7 +414,6 @@ position = Vector2(-12, 323)
 texture = ExtResource("14_uh6dx")
 
 [node name="Nuage2" type="Sprite2D" parent="DécorCiel"]
-z_index = -1
 position = Vector2(-32, -391)
 texture = ExtResource("15_eegsl")
 
@@ -436,8 +437,31 @@ position = Vector2(1144, -2211)
 scale = Vector2(0.725521, 0.725521)
 texture = ExtResource("16_uegak")
 
+[node name="Sprite2D" type="Sprite2D" parent="DécorCiel/Sprite2D"]
+position = Vector2(-1864.87, -1477.56)
+scale = Vector2(0.725521, 0.725521)
+texture = ExtResource("16_uegak")
+flip_h = true
+
 [node name="Nuage7" type="Sprite2D" parent="DécorCiel"]
 position = Vector2(-1249, -2093)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("14_uh6dx")
+flip_h = true
+
+[node name="Nuage7" type="Sprite2D" parent="DécorCiel/Nuage7"]
+position = Vector2(2474.67, -851.809)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("14_uh6dx")
+flip_h = true
+
+[node name="Nuage8" type="Sprite2D" parent="DécorCiel/Nuage7"]
+position = Vector2(2311.62, 490.667)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("14_uh6dx")
+
+[node name="Nuage7" type="Sprite2D" parent="DécorCiel/Nuage7/Nuage8"]
+position = Vector2(2474.67, -851.809)
 scale = Vector2(0.65625, 0.65625)
 texture = ExtResource("14_uh6dx")
 flip_h = true
@@ -447,8 +471,19 @@ position = Vector2(787, -3588)
 scale = Vector2(1.175, 1.175)
 texture = ExtResource("15_eegsl")
 
+[node name="Nuage9" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(-490, -3201)
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("15_eegsl")
+flip_h = true
+
+[node name="Nuage10" type="Sprite2D" parent="DécorCiel"]
+position = Vector2(-499, -3937)
+scale = Vector2(0.646615, 0.646615)
+texture = ExtResource("16_uegak")
+
 [node name="SceneOiseau" parent="." instance=ExtResource("17_jr7sn")]
-position = Vector2(-1138, -338)
+position = Vector2(-1062, -1743)
 scale = Vector2(1, 1.2)
 
 [node name="OiseauBeau" parent="SceneOiseau" index="0"]
@@ -474,10 +509,10 @@ position = Vector2(-952, -2923)
 position = Vector2(-962, -3223)
 
 [node name="SceneAvion5" parent="." instance=ExtResource("24_wu7ou")]
-position = Vector2(-2183, -4318)
+position = Vector2(-957, -4278)
 
 [node name="SceneAvion6" parent="." instance=ExtResource("24_wu7ou")]
-position = Vector2(-1602, -4658)
+position = Vector2(-951, -4636)
 
 [node name="SceneOiseau2" parent="." instance=ExtResource("17_jr7sn")]
 position = Vector2(-1548, -944)
@@ -613,15 +648,15 @@ frame_progress = 0.0
 
 [node name="satellite" parent="." instance=ExtResource("35_r6m06")]
 z_index = 5
-position = Vector2(1042, -4393)
+position = Vector2(201, -4528)
 
 [node name="satellite2" parent="." instance=ExtResource("35_r6m06")]
 z_index = 5
-position = Vector2(1075, -5624)
+position = Vector2(128, -5631)
 
 [node name="satellite3" parent="." instance=ExtResource("35_r6m06")]
 z_index = 5
-position = Vector2(1096, -4837)
+position = Vector2(183, -5030)
 
 [node name="Meteorite" parent="." instance=ExtResource("36_e03p2")]
 position = Vector2(-511, -8308)
@@ -655,6 +690,30 @@ position = Vector2(-544, 536)
 
 [node name="AudioStreamPlayer2D" parent="SceneAvion_Reversed 4/AvionAuto" index="2"]
 position = Vector2(-304, -88)
+
+[node name="Meteorite4" parent="." instance=ExtResource("36_e03p2")]
+position = Vector2(64, -8434)
+
+[node name="Sprite2D" parent="Meteorite4" index="1"]
+position = Vector2(-301, -192)
+
+[node name="Meteorite5" parent="." instance=ExtResource("36_e03p2")]
+position = Vector2(64, -8434)
+
+[node name="Sprite2D" parent="Meteorite5" index="1"]
+position = Vector2(248, -192)
+
+[node name="Meteorite6" parent="." instance=ExtResource("36_e03p2")]
+position = Vector2(64, -8434)
+
+[node name="Sprite2D" parent="Meteorite6" index="1"]
+position = Vector2(105, -370)
+
+[node name="Meteorite7" parent="." instance=ExtResource("36_e03p2")]
+position = Vector2(64, -8434)
+
+[node name="Sprite2D" parent="Meteorite7" index="1"]
+position = Vector2(-465, -284)
 
 [connection signal="finished" from="CouLisse/AudioStreamPlayer2D" to="CouLisse" method="_on_audio_stream_player_2d_finished"]
 [connection signal="body_entered" from="Pomme7" to="CouLisse" method="_on_pomme_body_entered"]
@@ -716,18 +775,27 @@ position = Vector2(-304, -88)
 [connection signal="body_entered" from="SceneOiseau/OiseauBeau" to="CanvasLayer/Score" method="_on_oiseau_beau_body_entered"]
 [connection signal="timeout" from="oiseauTimer" to="." method="_on_oiseau_timer_timeout"]
 [connection signal="body_entered" from="SceneAvion/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion/AvionAuto" to="SceneAvion/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion2/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion2/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion2/AvionAuto" to="SceneAvion2/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion3/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion3/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion3/AvionAuto" to="SceneAvion3/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion4/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion4/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion4/AvionAuto" to="SceneAvion4/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion5/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion5/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion5/AvionAuto" to="SceneAvion5/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion6/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion6/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion6/AvionAuto" to="SceneAvion6/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneOiseau2/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="SceneOiseau2/OiseauBeau" to="CanvasLayer/Score" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="SceneOiseau3/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="SceneOiseau3/OiseauBeau" to="CanvasLayer/Score" method="_on_oiseau_beau_body_entered"]
 [connection signal="body_entered" from="Pomme5" to="CouLisse" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme5" to="CanvasLayer/Score" method="_on_pomme_body_entered"]
 [connection signal="body_entered" from="Pomme5" to="Pomme5" method="_on_body_entered"]
@@ -759,23 +827,49 @@ position = Vector2(-304, -88)
 [connection signal="body_exited" from="Pomme10" to="CouLisse" method="_on_pomme_body_exited"]
 [connection signal="body_exited" from="Pomme10" to="Pomme10" method="_on_body_exited"]
 [connection signal="body_entered" from="SceneOiseau4/OiseauBeau" to="CouLisse" method="_on_oiseau_beau_body_entered"]
+[connection signal="body_entered" from="SceneOiseau4/OiseauBeau" to="CanvasLayer/Score" method="_on_oiseau_beau_body_entered"]
 [connection signal="body_entered" from="satellite" to="CouLisse" method="_on_satellite_body_entered"]
+[connection signal="body_entered" from="satellite" to="CanvasLayer/Score" method="_on_satellite_body_entered"]
 [connection signal="body_entered" from="satellite" to="satellite" method="_on_body_entered"]
 [connection signal="body_entered" from="satellite2" to="CouLisse" method="_on_satellite_body_entered"]
+[connection signal="body_entered" from="satellite2" to="CanvasLayer/Score" method="_on_satellite_2_body_entered"]
 [connection signal="body_entered" from="satellite2" to="satellite2" method="_on_body_entered"]
 [connection signal="body_entered" from="satellite3" to="CouLisse" method="_on_satellite_body_entered"]
+[connection signal="body_entered" from="satellite3" to="CanvasLayer/Score" method="_on_satellite_3_body_entered"]
 [connection signal="body_entered" from="satellite3" to="satellite3" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite" to="CouLisse" method="_on_meteorite_body_entered"]
+[connection signal="body_entered" from="Meteorite" to="CanvasLayer/Score" method="_on_meteorite_body_entered"]
 [connection signal="body_entered" from="Meteorite" to="Meteorite" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite2" to="CouLisse" method="_on_meteorite_2_body_entered"]
+[connection signal="body_entered" from="Meteorite2" to="CanvasLayer/Score" method="_on_meteorite_2_body_entered"]
 [connection signal="body_entered" from="Meteorite2" to="Meteorite2" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite3" to="CouLisse" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite3" to="CanvasLayer/Score" method="_on_meteorite_3_body_entered"]
 [connection signal="body_entered" from="Meteorite3" to="Meteorite3" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion_Reversed/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed/AvionAuto" to="SceneAvion_Reversed/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 2/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion_Reversed 2/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 2/AvionAuto" to="SceneAvion_Reversed 2/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 3/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion_Reversed 3/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 3/AvionAuto" to="SceneAvion_Reversed 3/AvionAuto" method="_on_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 4/AvionAuto" to="CouLisse" method="_on_avion_auto_body_entered"]
+[connection signal="body_entered" from="SceneAvion_Reversed 4/AvionAuto" to="CanvasLayer/Score" method="_on_avion_auto_body_entered"]
 [connection signal="body_entered" from="SceneAvion_Reversed 4/AvionAuto" to="SceneAvion_Reversed 4/AvionAuto" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite4" to="CouLisse" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite4" to="CanvasLayer/Score" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite4" to="Meteorite4" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite5" to="CouLisse" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite5" to="CanvasLayer/Score" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite5" to="Meteorite5" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite6" to="CouLisse" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite6" to="CanvasLayer/Score" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite6" to="Meteorite6" method="_on_body_entered"]
+[connection signal="body_entered" from="Meteorite7" to="CouLisse" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite7" to="CanvasLayer/Score" method="_on_meteorite_3_body_entered"]
+[connection signal="body_entered" from="Meteorite7" to="Meteorite7" method="_on_body_entered"]
 
 [editable path="SceneOiseau"]
 [editable path="SceneAvion"]
@@ -795,3 +889,7 @@ position = Vector2(-304, -88)
 [editable path="SceneAvion_Reversed 2"]
 [editable path="SceneAvion_Reversed 3"]
 [editable path="SceneAvion_Reversed 4"]
+[editable path="Meteorite4"]
+[editable path="Meteorite5"]
+[editable path="Meteorite6"]
+[editable path="Meteorite7"]

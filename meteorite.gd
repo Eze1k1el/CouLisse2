@@ -8,22 +8,20 @@ func _ready():
 		rotation += 0.5
 	elif depx > 2 :
 		rotation -= 0.5
-	position.x = randf_range(400,900,)
+	position.x = randf_range(200,200,)
 	$AudioStreamPlayer2D.play()
 
 func _physics_process(delta):
+		await get_tree().create_timer(67.0).timeout
 		position.x += depx
-		position.y += 10
-		if get_viewport().get_visible_rect().size.y + 300 <position.y :
-			position.y = -300
+		position.y += 30
+		if position.y >= -5770:
+			position.y = -8800
+			position.x = randf_range(200,200,)
 
 func _on_body_entered(body):
 	if body.is_in_group("CouLisse"):
 		queue_free()
 
-
-
-
-
-
-	pass # Replace with function body.
+func _on_audio_stream_player_2d_finished():
+		$AudioStreamPlayer2D.play()

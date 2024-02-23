@@ -66,3 +66,11 @@ func _on_satellite_body_entered(body):
 
 func _on_audio_stream_player_2d_finished():
 	$AudioStreamPlayer2D.play()
+
+
+func _on_meteorite_2_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_meteorite_3_body_entered(body):
+	pass # Replace with function body.

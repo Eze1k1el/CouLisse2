@@ -5,7 +5,7 @@ var speed=1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position.x = 2670
-	position.y = randf_range(900,200)
+	position.y = randf_range(-8000,-5000)
 	$AudioStreamPlayer2D.play()
 	
 func _on_audio_stream_player_2d_finished():
